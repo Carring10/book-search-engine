@@ -30,13 +30,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, profile };
     },
-    // saveBook: async (parent, args) => {
-    //   return await User.findOneAndUpdate(
-    //     { _id: args.id },
-    //     { $addToSet: { savedBooks: args } },
-    //     { new: true, runValidators: true }
-    //   );
-    // },
+    saveBook: async (parent, args) => {
+      return await User.findOneAndUpdate(
+        { _id: args.id },
+        { $addToSet: { savedBooks: args } },
+        { new: true, runValidators: true }
+      );
+    },
     removeBook: async (parent, args) => {
       return await User.findOneAndUpdate(
         { _id: args.id },
